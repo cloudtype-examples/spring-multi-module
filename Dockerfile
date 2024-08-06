@@ -28,6 +28,8 @@ COPY --from=build --chown=worker:worker /app/api/build/libs/*.jar ./main.jar
 
 USER worker:worker
 
+ENV PROFILE ${PROFILE}
+
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "main.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-Djava.security.egd=file:/dev/./urandom", "-jar", "main.jar"]
