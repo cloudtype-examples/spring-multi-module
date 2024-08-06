@@ -66,3 +66,6 @@ subprojects {
 }
 
 
+dependencies {
+	implementation(kotlin("script-runtime"))
+}
